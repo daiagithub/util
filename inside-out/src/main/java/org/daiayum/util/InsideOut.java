@@ -9,8 +9,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.swing.JOptionPane;
-
 public class InsideOut {
 	static Connection con = null;
 	static long elapsedSeconds;
@@ -19,7 +17,7 @@ public class InsideOut {
 	static Date now;
 	static Date inTime;
 	
-	static DateFormat formatter = new SimpleDateFormat("HH:mm:s");
+	static DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
 	
 	static {
 		try {
@@ -60,9 +58,20 @@ public class InsideOut {
 	}
 
 	public static String generateMessage(){
-		return "In: " + formatter.format(inTime) 
-				+ " Elapsed: " + String.format("%02d", elapsedHours) + ":" + String.format("%02d", elapsedMinutes) + ":" + String.format("%02d", elapsedSeconds)
-				+ ". Adviced Out: " + formatter.format(new Date(inTime.getTime() + (8 * 60 * 60 * 1000)));		
+		return "In: " + format(inTime) 
+				+ " Elapsed: " + format(elapsedHours) + ":" + format(elapsedMinutes) + ":" + format(elapsedSeconds)
+				+ ". Adviced Out: " + format(new Date(inTime.getTime() + (8 * 60 * 60 * 1000)));		
+	}
+	
+	private static String format(Object obj){
+		if(obj instanceof Date){
+			return formatter.format(obj);
+		}
+		
+		if(obj instanceof Long){
+			return String.format("%02d", obj);
+		}	
+		return null;
 	}
 	
 	public static void main(String args[]) {
