@@ -4,8 +4,11 @@ import javax.swing.JOptionPane;
 
 public class App {
     public static void main( String[] args ){
-    	InsideOut.setElapsedSeconds();
-    	InsideOut.setAllTimeComponentsValues();			
-		JOptionPane.showMessageDialog(null, InsideOut.generateMessage());		
+    	InsideOutPredictor insideOutPredictor = new InsideOutPredictorWithWinCommand();
+    	insideOutPredictor.setElapsedSeconds();
+    	insideOutPredictor.setAllTimeComponentsValues();
+    	String message = insideOutPredictor.generateMessage();
+    	System.out.println(message);
+    	JOptionPane.showMessageDialog(null, message);
     }
 }
