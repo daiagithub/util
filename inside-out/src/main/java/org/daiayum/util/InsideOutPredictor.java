@@ -12,7 +12,7 @@ public abstract class InsideOutPredictor {
 	static Date inTime;
 	
 	static SimpleDateFormat formatter = new SimpleDateFormat();
-	static String TIME_FORMAT = "HH:mm:ss";
+	static final String TIME_FORMAT = "HH:mm:ss";
 	
 	public abstract void setElapsedSeconds();
 	

@@ -11,9 +11,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class WindowsUtil {
+	
+	private static final String COMMAND_LASTBOOTUPTIME = "wmic os get lastbootuptime"; 
+	
 	public static Date getLastBootUpTime(){		
 		try {
-			BufferedReader br = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec("wmic os get lastbootuptime").getInputStream()));
+			BufferedReader br = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec(COMMAND_LASTBOOTUPTIME).getInputStream()));
 			StringBuffer sb = new StringBuffer();
 			String line;
 			
@@ -27,7 +30,7 @@ public class WindowsUtil {
 		} catch (IOException e) {		
 			e.printStackTrace();
 		} catch (ParseException e) {		
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
 		return null;		
 	}
