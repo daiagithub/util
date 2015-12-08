@@ -8,7 +8,6 @@ public class App {
     	insideOutPredictor.setElapsedSeconds();
     	insideOutPredictor.setAllTimeComponentsValues();
     	String message = insideOutPredictor.generateMessage();
-    	System.out.println(message);
     	JOptionPane.showMessageDialog(null, message);
     }
 }

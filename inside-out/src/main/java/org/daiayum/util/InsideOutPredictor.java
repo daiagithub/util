@@ -1,6 +1,5 @@
 package org.daiayum.util;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -12,7 +11,8 @@ public abstract class InsideOutPredictor {
 	static Date now;
 	static Date inTime;
 	
-	static DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+	static SimpleDateFormat formatter = new SimpleDateFormat();
+	static String TIME_FORMAT = "HH:mm:ss";
 	
 	public abstract void setElapsedSeconds();
 	
@@ -24,12 +24,13 @@ public abstract class InsideOutPredictor {
 	}
 	
 	public String generateMessage(){
-		return "In: " + format(inTime) 
-				+ " Elapsed: " + format(elapsedHours) + ":" + format(elapsedMinutes) + ":" + format(elapsedSeconds)
-				+ ". Adviced Out: " + format(new Date(inTime.getTime() + (8 * 60 * 60 * 1000)));		
+		return "In: " + format(inTime, TIME_FORMAT) 
+				+ " Elapsed: " + format(elapsedHours, TIME_FORMAT) + ":" + format(elapsedMinutes, TIME_FORMAT) + ":" + format(elapsedSeconds, TIME_FORMAT)
+				+ ". Adviced Out: " + format(new Date(inTime.getTime() + (8 * 60 * 60 * 1000)), TIME_FORMAT);		
 	}
 	
-	private static String format(Object obj){
+	public static String format(Object obj, String format){
+		formatter.applyPattern(format);
 		if(obj instanceof Date){
 			return formatter.format(obj);
 		}
