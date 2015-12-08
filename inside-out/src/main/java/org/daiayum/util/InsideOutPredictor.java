@@ -26,7 +26,7 @@ public abstract class InsideOutPredictor {
 		elapsedSeconds = elapsedSeconds % 3600; // elapsedSeconds reassigned
 		elapsedMinutes = elapsedSeconds / 60;
 		elapsedSeconds = elapsedSeconds % 60;
-		LOGGER.info("Finished all time components for elapsed time.");
+		LOGGER.info("Finished setting all time components for elapsed time.");
 	}
 	
 	public String generateMessage(){
