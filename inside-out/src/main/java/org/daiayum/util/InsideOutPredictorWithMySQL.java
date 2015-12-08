@@ -11,11 +11,16 @@ import java.util.Date;
 
 public class InsideOutPredictorWithMySQL extends InsideOutPredictor{
 	static Connection con = null;
+	static final String mysqlDriver = "com.mysql.jdbc.Driver";
+	static final String conURL = "jdbc:mysql://localhost:3306/";
+	static final String username = "root";
+	static final String password = "password";
+	static final String query = "SHOW GLOBAL STATUS LIKE 'Uptime';";
 	
 	static {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "password");
+			Class.forName(mysqlDriver);
+			con = DriverManager.getConnection(conURL, username, password);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -25,7 +30,6 @@ public class InsideOutPredictorWithMySQL extends InsideOutPredictor{
 
 	@Override
 	public void setElapsedSeconds() {
-		String query = "SHOW GLOBAL STATUS LIKE 'Uptime';";
 		PreparedStatement prSt;
 		try {
 			prSt = con.prepareStatement(query);
