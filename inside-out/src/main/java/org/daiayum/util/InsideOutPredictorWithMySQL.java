@@ -9,6 +9,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class InsideOutPredictorWithMySQL extends InsideOutPredictor{
 	static Connection con = null;
 	static final String MYSQL_DRIVER = "com.mysql.jdbc.Driver";
@@ -17,13 +20,18 @@ public class InsideOutPredictorWithMySQL extends InsideOutPredictor{
 	static final String PASSWORD = "password";
 	static final String QUERY = "SHOW GLOBAL STATUS LIKE 'Uptime';";
 	
+	static final Logger LOGGER = LoggerFactory.getLogger(InsideOutPredictor.class);
+	
 	static {
 		try {
 			Class.forName(MYSQL_DRIVER);
 			con = DriverManager.getConnection(CON_URL, USERNAME, PASSWORD);
+			LOGGER.debug("Got MySQL connection.");
 		} catch (ClassNotFoundException e) {
+			LOGGER.error("Failed to connect MySQL {}", e.getMessage());
 			e.printStackTrace();
 		} catch (SQLException e) {
+			LOGGER.error("Failed to connect MySQL {}", e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -43,6 +51,7 @@ public class InsideOutPredictorWithMySQL extends InsideOutPredictor{
 			}
 			rs.close();			
 		} catch (SQLException e) {
+			LOGGER.error("Failed to set elapsed time. {}", e.getMessage());
 			e.printStackTrace();						
 		}
 	}
