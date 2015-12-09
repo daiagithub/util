@@ -5,6 +5,7 @@ import java.util.Date;
 public class Attendance {
 	private Date timeIn;
 	private Date timeOut;
+	private Long elapsedSeconds;
 	private String actualTimeSpent;
 	private Date recordDate;
 	private String timeZone;
@@ -53,6 +54,21 @@ public class Attendance {
 	}
 	public void setLastUpdated(Date lastUpdated) {
 		this.lastUpdated = lastUpdated;
+	}
+	public Long getElapsedSeconds() {
+		return elapsedSeconds;
+	}
+	public void setElapsedSeconds(Long elapsedSeconds) {
+		this.elapsedSeconds = elapsedSeconds;
+		this.setActualTimeSpent(getElapsedTimeFormattedString(elapsedSeconds));
 	}	
 
+	private String getElapsedTimeFormattedString(Long elapsedSeconds){
+		Long elapsedHours = elapsedSeconds / 3600;
+		elapsedSeconds = elapsedSeconds % 3600; // elapsedSeconds reassigned
+		Long elapsedMinutes = elapsedSeconds / 60;
+		elapsedSeconds = elapsedSeconds % 60;
+		String elapsedTime = AttendanceService.format(elapsedHours, null) + ":" + AttendanceService.format(elapsedMinutes, null) + ":" + AttendanceService.format(elapsedSeconds, null);		
+		return elapsedTime;		
+	}
 }
