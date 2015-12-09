@@ -16,7 +16,7 @@ public class StartupRunner {
     	
 		String in = AttendanceService.format(attendance.getTimeIn(), DATETIME_FORMAT);		
 		WindowsUtil.writeToFile(NEW_LINE + in, FILE_PATH);		
-		logger.info("Done.");
+		logger.info("Logged time in {}.", in);
 	}
 
 }
