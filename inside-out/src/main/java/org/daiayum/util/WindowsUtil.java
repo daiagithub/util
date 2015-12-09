@@ -46,9 +46,7 @@ public class WindowsUtil {
     		FileWriter fileWritter = new FileWriter(filePath, true);
 	        BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
 	        bufferWritter.write(data);
-	        bufferWritter.close();
-   	    
-	        System.out.println("Content added.");
+	        bufferWritter.close();  
 	        
     	}catch(IOException e){
     		e.printStackTrace();
