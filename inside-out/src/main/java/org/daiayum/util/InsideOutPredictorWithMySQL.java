@@ -12,7 +12,8 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class InsideOutPredictorWithMySQL extends InsideOutPredictor{
+@Deprecated
+public class InsideOutPredictorWithMySQL extends AttendanceService{
 	static Connection con = null;
 	static final String MYSQL_DRIVER = "com.mysql.jdbc.Driver";
 	static final String CON_URL = "jdbc:mysql://localhost:3306/";
@@ -20,7 +21,7 @@ public class InsideOutPredictorWithMySQL extends InsideOutPredictor{
 	static final String PASSWORD = "password";
 	static final String QUERY = "SHOW GLOBAL STATUS LIKE 'Uptime';";
 	
-	static final Logger LOGGER = LoggerFactory.getLogger(InsideOutPredictor.class);
+	static final Logger LOGGER = LoggerFactory.getLogger(AttendanceService.class);
 	
 	static {
 		try {
@@ -36,7 +37,7 @@ public class InsideOutPredictorWithMySQL extends InsideOutPredictor{
 		}
 	}
 
-	@Override
+	/*@Override
 	public void setElapsedSeconds() {
 		PreparedStatement prSt;
 		try {
@@ -49,11 +50,24 @@ public class InsideOutPredictorWithMySQL extends InsideOutPredictor{
 				inTime = new Date(now.getTime()	- (long) (elapsedSeconds * 1000));
 				break;
 			}
-			rs.close();			
+			rs.close();	
+			return 
 		} catch (SQLException e) {
 			LOGGER.error("Failed to set elapsed time. {}", e.getMessage());
 			e.printStackTrace();						
 		}
+	}*/
+
+	@Override
+	protected Long getElapsedSeconds(Date timeIn) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Attendance registerNewAttendance(Date timeIn) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
