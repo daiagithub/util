@@ -10,9 +10,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class WindowsUtil {
 	
 	private static final String COMMAND_LASTBOOTUPTIME = "wmic os get lastbootuptime"; 
+	private static Logger LOGGER = LoggerFactory.getLogger(WindowsUtil.class);
 	
 	public static Date getLastBootUpTime(){		
 		try {
@@ -22,11 +26,14 @@ public class WindowsUtil {
 			
 			while ((line = br.readLine()) != null) sb.append(line);
 			
+			LOGGER.info("Windows response: {}", sb.toString());
+			
 			String lastBootUpTime = sb.toString().trim();
 			lastBootUpTime = lastBootUpTime.substring(lastBootUpTime.lastIndexOf(' '), lastBootUpTime.length()).trim();
 			lastBootUpTime = lastBootUpTime.substring(0, lastBootUpTime.indexOf("."));		
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");    		
 			return formatter.parse(lastBootUpTime); 
+			
 		} catch (IOException e) {		
 			e.printStackTrace();
 		} catch (ParseException e) {		
@@ -38,16 +45,14 @@ public class WindowsUtil {
 	public static void writeToFile(String data, String filePath){
 		try{
     		File file =new File(filePath);    		
-    		
     		if(!file.exists()){
     			file.createNewFile();
-    		}
-    		
+    		}    		
     		FileWriter fileWritter = new FileWriter(filePath, true);
 	        BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
 	        bufferWritter.write(data);
-	        bufferWritter.close();  
-	        
+	        bufferWritter.close();  	        
+	        LOGGER.info("Updated file {}", filePath);
     	}catch(IOException e){
     		e.printStackTrace();
     	}	
