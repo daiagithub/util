@@ -30,12 +30,11 @@ public abstract class AttendanceService {
 		return attendance;
 	}	
 	
-	public Attendance updateAttendance(Attendance attendance) {		
+	public void updateAttendance(Attendance attendance) {		
 		attendance.setElapsedSeconds(getElapsedSeconds(attendance.getTimeIn()));
 		Date now = new Date();
 		attendance.setTimeOut(now);
 		attendance.setLastUpdated(now);
-		return attendance;
 	}	
 	
 	public String generateMessage(Attendance attendance){
