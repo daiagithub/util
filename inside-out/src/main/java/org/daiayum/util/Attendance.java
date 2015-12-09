@@ -6,7 +6,7 @@ public class Attendance {
 	private Date timeIn;
 	private Date timeOut;
 	private Long elapsedSeconds;
-	private String actualTimeSpent;
+	private String actualTimeSpent;	//Actual time as formatted string
 	private Date recordDate;
 	private String timeZone;
 	
@@ -58,11 +58,21 @@ public class Attendance {
 	public Long getElapsedSeconds() {
 		return elapsedSeconds;
 	}
+	
+	/**
+	 * Update the actualTimeSpent formatted string as well.
+	 * @param elapsedSeconds
+	 */
 	public void setElapsedSeconds(Long elapsedSeconds) {
 		this.elapsedSeconds = elapsedSeconds;
 		this.setActualTimeSpent(getElapsedTimeFormattedString(elapsedSeconds));
 	}	
 
+	/**
+	 * Format the actual elapsed Second to HH:mm:ss format
+	 * @param elapsedSeconds
+	 * @return
+	 */
 	private String getElapsedTimeFormattedString(Long elapsedSeconds){
 		Long elapsedHours = elapsedSeconds / 3600;
 		elapsedSeconds = elapsedSeconds % 3600; // elapsedSeconds reassigned
