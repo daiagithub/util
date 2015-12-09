@@ -26,7 +26,8 @@ public abstract class AttendanceService {
 		attendance.setDateCreated(now);
 		attendance.setLastUpdated(null);
 		attendance.setRecordDate(now);
-		attendance.setTimeZone(null);		
+		attendance.setTimeZone(null);	
+		LOGGER.info("New attendance created.");
 		return attendance;
 	}	
 	
@@ -35,6 +36,7 @@ public abstract class AttendanceService {
 		Date now = new Date();
 		attendance.setTimeOut(now);
 		attendance.setLastUpdated(now);
+		LOGGER.info("Attendance updated.");
 	}	
 	
 	public String generateMessage(Attendance attendance){
