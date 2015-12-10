@@ -13,7 +13,7 @@ public class ShutdownRunner {
 
 	private static final String TAB_CHARACTER = "\t";
 	private static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
-	private static final String FILE_PATH = "F:\\tools\\recorder\\logs.log";
+	private static final String FILE_PATH = "F:\\tools\\recorder\\attendance-logs.log";
 	private static final Logger LOGGER = LoggerFactory.getLogger(ShutdownRunner.class);
 	
 	public static void main(String[] args) {

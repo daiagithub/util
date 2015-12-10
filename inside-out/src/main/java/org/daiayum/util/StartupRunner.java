@@ -11,7 +11,7 @@ public class StartupRunner {
 
 	private static final String NEW_LINE = System.getProperty("line.separator");
 	private static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
-	private static final String FILE_PATH = "F:\\tools\\recorder\\logs.log";
+	private static final String FILE_PATH = "F:\\tools\\recorder\\attendance-logs.log";
 	
 	public static void main(String[] args) {
 		Logger logger = LoggerFactory.getLogger(StartupRunner.class);
