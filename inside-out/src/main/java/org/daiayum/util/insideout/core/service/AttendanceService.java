@@ -4,14 +4,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.daiayum.util.insideout.core.entity.Attendance;
+import org.daiayum.util.insideout.util.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public abstract class AttendanceService {
 	
-	static SimpleDateFormat formatter = new SimpleDateFormat();
-	static final String TIME_FORMAT = "HH:mm:ss";
-	
+	static SimpleDateFormat formatter = new SimpleDateFormat();	
 	static final Logger LOGGER = LoggerFactory.getLogger(AttendanceService.class);	
 
 	protected Long getElapsedSeconds(Date timeIn) {			
@@ -41,9 +40,9 @@ public abstract class AttendanceService {
 	}	
 	
 	public String generateMessage(Attendance attendance){
-		String message = "In: " + format(attendance.getTimeIn(), TIME_FORMAT) 
+		String message = "In: " + format(attendance.getTimeIn(), Config.ATTENDANCE_TIME_FORMAT) 
 				+ " Elapsed: " + attendance.getActualTimeSpent()
-				+ ". Adviced Out: " + format(new Date(attendance.getTimeIn().getTime() + (8 * 60 * 60 * 1000)), TIME_FORMAT);	
+				+ ". Adviced Out: " + format(new Date(attendance.getTimeIn().getTime() + (8 * 60 * 60 * 1000)), Config.ATTENDANCE_TIME_FORMAT);	
 		LOGGER.info("Message: {}", message);		
 		return message;		
 	}

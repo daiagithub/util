@@ -13,14 +13,13 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class WindowsUtil {
+public class WindowsUtil {	
 	
-	private static final String COMMAND_LASTBOOTUPTIME = "wmic os get lastbootuptime"; 
 	private static Logger LOGGER = LoggerFactory.getLogger(WindowsUtil.class);
 	
 	public static Date getLastBootUpTime(){		
 		try {
-			BufferedReader br = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec(COMMAND_LASTBOOTUPTIME).getInputStream()));
+			BufferedReader br = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec(Config.WINDOW_COMMAND_LASTBOOTUPTIME).getInputStream()));
 			StringBuffer sb = new StringBuffer();
 			String line;
 			
