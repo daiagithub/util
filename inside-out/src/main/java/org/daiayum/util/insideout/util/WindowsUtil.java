@@ -1,4 +1,4 @@
-package org.daiayum.util;
+package org.daiayum.util.insideout.util;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

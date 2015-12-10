@@ -9,6 +9,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.daiayum.util.insideout.core.entity.Attendance;
+import org.daiayum.util.insideout.core.service.AttendanceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

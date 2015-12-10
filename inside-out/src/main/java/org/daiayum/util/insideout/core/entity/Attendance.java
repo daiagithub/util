@@ -1,6 +1,8 @@
-package org.daiayum.util;
+package org.daiayum.util.insideout.core.entity;
 
 import java.util.Date;
+
+import org.daiayum.util.insideout.core.service.AttendanceService;
 
 public class Attendance {
 	private Date timeIn;

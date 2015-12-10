@@ -1,8 +1,9 @@
-package org.daiayum.util;
+package org.daiayum.util.insideout.core.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.daiayum.util.insideout.core.entity.Attendance;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
