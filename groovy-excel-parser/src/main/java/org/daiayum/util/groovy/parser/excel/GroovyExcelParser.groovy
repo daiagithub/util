@@ -7,8 +7,6 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.ss.util.CellReference;
 
 class GroovyExcelParser {
-  //http://poi.apache.org/spreadsheet/quick-guide.html#Iterator
-
   def parse(path) {
     InputStream inp = new FileInputStream(path)
     Workbook wb = WorkbookFactory.create(inp);
